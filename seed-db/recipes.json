@@ -1,0 +1,23 @@
+[
+  {
+    "_id": "333333333333333333333300",
+    "title": "pasta",
+    "ingredients": "noodles, sauce, cheese",
+    "directions": "step1, step2",
+    "userId": "333333333333333333333300"
+  },
+  {
+    "_id": "333333333333333333333301",
+    "title": "fries",
+    "ingredients": "potatoes",
+    "directions": "step1, step2",
+    "userId": "333333333333333333333300"
+  },
+  {
+    "_id": "333333333333333333333302",
+    "title": "pizza",
+    "ingredients": "dough, sauce, cheese",
+    "directions": "step1, step2",
+    "userId": "333333333333333333333300"
+  }
+]
