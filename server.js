@@ -5,7 +5,7 @@ const mongoose = require('mongoose');
 const morgan = require('morgan');
 const passport = require('passport');
 
-const recipesRouter = require('./routes/recipes');
+const {router: recipesRouter} = require('./routes/recipes');
 const {router: usersRouter} = require('./routes/users');
 const { router: authRouter, localStrategy, jwtStrategy } = require('./passport/index');
 
@@ -18,6 +18,9 @@ const app = express();
 
 // Logging
 app.use(morgan('common'));
+
+// Create a static webserver
+app.use(express.static('public'));
 
 // CORS
 app.use(function (req, res, next) {
@@ -34,13 +37,15 @@ app.use(function (req, res, next) {
 passport.use(localStrategy);
 passport.use(jwtStrategy);
 
+// Protect endpoints using JWT Strategy
+const jwtAuth = passport.authenticate('jwt', { session: false, failWithError: true });
+
 // Mount routers
 app.use('/api/recipes/', recipesRouter);
 app.use('/api/users/', usersRouter);
 app.use('/api/auth/', authRouter);
 
-// Protect endpoints using JWT Strategy
-const jwtAuth = passport.authenticate('jwt', { session: false});
+
 
 app.use((req, res, next) => {
   const err = new Error('Not Found');

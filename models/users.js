@@ -18,11 +18,21 @@ const UserSchema = mongoose.Schema({
   lastName: {type: String, default: ''}
 });
 
+UserSchema.set('toObject', {
+  virtuals: true,     // include built-in virtual `id`
+  versionKey: false,  // remove `__v` version key
+  transform: (doc, ret) => {
+    delete ret._id; // delete `_id`
+    delete ret.password;
+  }
+});
+
 UserSchema.methods.serialize = function() {
   return {
     username: this.username || '',
     firstName: this.firstName || '',
-    lastName: this.lastName || ''
+    lastName: this.lastName || '',
+    id:this.id|| ''
   };
 };
 
