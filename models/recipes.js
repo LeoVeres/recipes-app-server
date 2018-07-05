@@ -4,17 +4,17 @@ const recipeSchema = new mongoose.Schema({
   title: { type: String, required: true },
   ingredients: {type: Array, default: []},
   directions: {type: String, default: ''},
+  tags: {type: Array, default: []},
   userId: { type: mongoose.Schema.Types.ObjectId, ref: 'User', required: true }
 });
 
-// Add `createdAt` and `updatedAt` fields
 recipeSchema.set('timestamps', true);
 
 recipeSchema.set('toObject', {
-  virtuals: true,     // include built-in virtual `id`
-  versionKey: false,  // remove `__v` version key
+  virtuals: true,     
+  versionKey: false, 
   transform: (doc, ret) => {
-    delete ret._id; // delete `_id`
+    delete ret._id; 
   }
 });
 
@@ -24,7 +24,8 @@ recipeSchema.methods.serialize = function() {
     ingredients: this.ingredients || '',
     directions: this.directions || '',
     userId: this.userId ||'',
-    id:this.id|| ''
+    id:this.id|| '',
+    tags:this.tags||''
   };
 };
 

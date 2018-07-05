@@ -3,8 +3,11 @@ const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 const {Recipe} = require('../models/recipes');
 
+
 const router = express.Router();
 const jsonParser = bodyParser.json();
+
+
 /* ========== GET/READ ALL ITEMS ========== */
 router.get('/', (req, res, next) => {
   const {searchTerm} = req.query;
@@ -16,6 +19,8 @@ router.get('/', (req, res, next) => {
     const re = new RegExp(searchTerm, 'i');
     filter.$or = [{ 'title': re }, { 'ingredients': re }];
   }
+
+
 
   Recipe.find(filter)
     .sort({ updatedAt: 'desc' })
@@ -32,7 +37,6 @@ router.get('/:id', (req, res, next) => {
   const { id } = req.params;
   const userId = req.user.id;
 
-  /***** Never trust users - validate input *****/
   if (!mongoose.Types.ObjectId.isValid(id)) {
     const err = new Error('The `id` is not valid');
     err.status = 400;
@@ -54,11 +58,10 @@ router.get('/:id', (req, res, next) => {
 
 /* ========== POST/CREATE AN ITEM ========== */
 router.post('/',jsonParser, (req, res, next) => {
-  const { title, ingredients, directions} = req.body;
+  const { title, ingredients, directions, tags} = req.body;
   const userId = req.user.id;
-  const newRecipe = { title, ingredients, userId, directions };
+  const newRecipe = { title, ingredients, userId, directions, tags };
 
-  /***** Never trust users - validate input *****/
   if (!title) {
     const err = new Error('Missing `title` in request body');
     err.status = 400;
@@ -68,7 +71,6 @@ router.post('/',jsonParser, (req, res, next) => {
   Recipe.create(newRecipe)
     .then(result => {
       return res.status(201).json(result.serialize());
-      //res.location(`${req.originalUrl}/${result.id}`).status(201).json(result);
     })
     .catch(err => {
       next(err);
@@ -79,12 +81,10 @@ router.post('/',jsonParser, (req, res, next) => {
 router.put('/:id', jsonParser, (req, res, next) => {
   console.log(req.body);
   const { id } = req.params;
-  const { title, ingredients, directions } = req.body;
+  const { title, ingredients, directions, tags } = req.body;
   const userId = req.user.id;
-  const updateRecipe = { title, ingredients, userId, directions };
+  const updateRecipe = { title, ingredients, userId, directions,tags };
   
-
-  /***** Never trust users - validate input *****/
   if (!mongoose.Types.ObjectId.isValid(id)) {
     const err = new Error('The `id` is not valid');
     err.status = 400;
@@ -96,7 +96,6 @@ router.put('/:id', jsonParser, (req, res, next) => {
     err.status = 400;
     return next(err);
   }
-
   Recipe.findByIdAndUpdate(id, updateRecipe, { new: true })
     .then(result => {
       if (result) {
@@ -115,7 +114,6 @@ router.delete('/:id', (req, res, next) => {
   const { id } = req.params;
   const userId = req.user.id;
 
-  /***** Never trust users - validate input *****/
   if (!mongoose.Types.ObjectId.isValid(id)) {
     const err = new Error('The `id` is not valid');
     err.status = 400;
@@ -130,12 +128,6 @@ router.delete('/:id', (req, res, next) => {
       next(err);
     });
 });
-
-// router.get('/', (req, res) => {
-//   return Recipe.find()
-//     .then(recipes => res.json(recipes.map(recipes => recipes.serialize())))
-//     .catch(err => res.status(500).json({message: 'Internal server error'}));
-// });
 
 
 module.exports = {router};
