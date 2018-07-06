@@ -6,6 +6,7 @@ const morgan = require('morgan');
 const passport = require('passport');
 
 const {router: recipesRouter} = require('./routes/recipes');
+const {router: planRouter} = require('./routes/mealplanner');
 const {router: usersRouter} = require('./routes/users');
 const { router: authRouter, localStrategy, jwtStrategy } = require('./passport/index');
 
@@ -42,6 +43,7 @@ const jwtAuth = passport.authenticate('jwt', { session: false, failWithError: tr
 
 // Mount routers
 app.use('/api/recipes/', jwtAuth, recipesRouter);
+app.use('/api/mealplanner/', jwtAuth, planRouter);
 app.use('/api/users/', usersRouter);
 app.use('/api/auth/', authRouter);
 
