@@ -1,2 +1,10 @@
 language: node_js
 node_js: node
+deploy:
+  provider: heroku
+  api_key:
+    secure: EAwqfon7E9JRtrkV8iTMNjIXUF1tpa7LsSTeHhC1wf5u01kEAelnjM3WUNGFN+JsfdFgTYDUe5HjHXEEqv2Z9TeQKuKHxR2eVGsBWLa62tNRCks9uahITG0+k3l4daApgXVjK4bt3CPr1sKkfEUejztKbD2c/BR0ncp90ZGOduXqK1xvBESJuE08qZ4li7b0dK6lxwkOiuvnGxvxAyUp37/dIo60o3SJkeP8eMaSu4nneO4FpJ1W+YophSBuiHQRDGuflnFmAKf0fAo+f24BBnfUYPbsnIh1Quidf+pCY9RVNmECHbRxyuA4UCwH6vBzAH3xfBeoIxljb8mVgEVTNH/imkdrQ+mrUxRX7S6luwSDX9aWde2mSyu68L9nDAY26ZKX+aex/P0u+jXOWfhyrV67DHR97G+tqe88pvZ033X5u/CyyakUPd6ajOK1LGyQXIP0FFhVTmGyyyqisUcDnjs8pQ5BFH+WUvCp7O/E8IGAkJOcolXOUbPMVAIEkHwISE9j3cxMijQzCeC9uXNkrIuEBOpXGcPDLgZZfsrlME45eyuMsbEjtfm/3S7PMg32PIeVk6H5dT2IJawVZNhYx65Dq/3f5eSyJEzl6fMuzYvfYqWbgm4h0s/LUvYZckT5tAebUyiK9i0KmpBd0AlDuwvpWrJ4B0RC1tOoedd/Rv8=
+  app: leos-recipe-app-server
+
+  on:
+    repo: LeoVeres/recipes-app-server
