@@ -67,9 +67,9 @@ router.post('/',jsonParser, (req, res, next) => {
 router.put('/:id', jsonParser, (req, res, next) => {
   console.log(req.body);
   const { id } = req.params;
-  const {extra} = req.body;
+  const {extra, checked} = req.body;
   const userId = req.user.id;
-  const updateList = {extra, userId};
+  const updateList = {extra, checked,userId};
   
   if (!mongoose.Types.ObjectId.isValid(id)) {
     const err = new Error('The `id` is not valid');

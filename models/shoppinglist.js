@@ -2,6 +2,7 @@ const mongoose = require('mongoose');
 
 const listSchema = new mongoose.Schema({
   extra: {type: String, default: ''},
+  checked:{type:Boolean, default:false},
   userId: { type: mongoose.Schema.Types.ObjectId, ref: 'User', required: true }
 });
 
@@ -20,6 +21,7 @@ listSchema.methods.serialize = function() {
     extra: this.extra || '',
     userId: this.userId ||'',
     id:this.id|| '',
+    checked:this.checked||''
   };
 };
 
