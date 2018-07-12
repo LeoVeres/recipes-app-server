@@ -8,7 +8,7 @@ const router = express.Router();
 const jsonParser = bodyParser.json();
 
 
-/* ========== GET/READ ALL ITEMS ========== */
+/* ========== GET ALL========== */
 router.get('/', (req, res, next) => {
   const {searchTerm} = req.query;
   const userId = req.user.id;
@@ -32,7 +32,7 @@ router.get('/', (req, res, next) => {
     });
 });
 
-/* ========== GET/READ A SINGLE ITEM ========== */
+/* ========== GET A SINGLE ITEM ========== */
 router.get('/:id', (req, res, next) => {
   const { id } = req.params;
   const userId = req.user.id;
@@ -56,7 +56,7 @@ router.get('/:id', (req, res, next) => {
     });
 });
 
-/* ========== POST/CREATE AN ITEM ========== */
+/* ========== POST ========== */
 router.post('/',jsonParser, (req, res, next) => {
   const { title, ingredients, directions, tags, day, meal} = req.body;
   const userId = req.user.id;
@@ -77,7 +77,7 @@ router.post('/',jsonParser, (req, res, next) => {
     });
 });
 
-/* ========== PUT/UPDATE A SINGLE ITEM ========== */
+/* ========== PUT ========== */
 router.put('/:id', jsonParser, (req, res, next) => {
   console.log(req.body);
   const { id } = req.params;
@@ -109,7 +109,7 @@ router.put('/:id', jsonParser, (req, res, next) => {
     });
 });
 
-/* ========== DELETE/REMOVE A SINGLE ITEM ========== */
+/* ========== DELETE ========== */
 router.delete('/:id', (req, res, next) => {
   const { id } = req.params;
   const userId = req.user.id;

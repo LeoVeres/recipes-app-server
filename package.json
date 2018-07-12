@@ -5,12 +5,11 @@
   "main": "index.js",
   "scripts": {
     "start": "nodemon index.js",
-    "mocha": "mocha --exit --file test/setup.test.js '!(node_modules)/**/*test.js'",
-    "mocha-exit0": "mocha --exit --file test/setup.test.js '!(node_modules)/**/*test.js' || true",
-    "test": "nodemon --exec npm run mocha-exit0",
-    "cover": "nodemon --exec nyc --reporter=lcov --reporter=text-summary npm run mocha-exit0",
     "heroku": "node index.js",
-    "travis": "npm run mocha"
+    "travis": "npm run mocha",
+    "test": "mocha --exit --colors",
+    "mocha-exit0": "mocha --exit --file test/setup.test.js",
+    "test2": "nodemon --exec npm run mocha-exit0"
   },
   "dependencies": {
     "cors": "^2.8.4",
@@ -34,3 +33,6 @@
     "nyc": "^11.6.0"
   }
 }
+
+
+

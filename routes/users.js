@@ -7,7 +7,6 @@ const router = express.Router();
 
 const jsonParser = bodyParser.json();
 
-// Post to register a new user
 router.post('/', jsonParser, (req, res) => {
   const requiredFields = ['username', 'password'];
   const missingField = requiredFields.find(field => !(field in req.body));
@@ -54,9 +53,7 @@ router.post('/', jsonParser, (req, res) => {
       min: 1
     },
     password: {
-      min: 1,
-      // bcrypt truncates after 72 characters, so let's not give the illusion
-      // of security by storing extra (unused) info
+      min: 1, ////////////////////////////////////////////increase min to 8 after dev
       max: 72
     }
   };
@@ -85,8 +82,6 @@ router.post('/', jsonParser, (req, res) => {
   }
 
   let {username, password, firstName = '', lastName = ''} = req.body;
-  // Username and password come in pre-trimmed, otherwise we throw an error
-  // before this
   firstName = firstName.trim();
   lastName = lastName.trim();
 
@@ -94,7 +89,6 @@ router.post('/', jsonParser, (req, res) => {
     .count()
     .then(count => {
       if (count > 0) {
-        // There is an existing user with the same username
         return Promise.reject({
           code: 422,
           reason: 'ValidationError',
@@ -102,7 +96,6 @@ router.post('/', jsonParser, (req, res) => {
           location: 'username'
         });
       }
-      // If there is no existing user, hash the password
       return User.hashPassword(password);
     })
     .then(hash => {
@@ -117,14 +110,13 @@ router.post('/', jsonParser, (req, res) => {
       return res.status(201).json(user.serialize());
     })
     .catch(err => {
-      // Forward validation errors on to the client, otherwise give a 500
-      // error because something unexpected has happened
       if (err.reason === 'ValidationError') {
         return res.status(err.code).json(err);
       }
       res.status(500).json({code: 500, message: 'Internal server error'});
     });
 });
+
 
 
 module.exports = {router};
