@@ -4,7 +4,7 @@ const express = require('express');
 const mongoose = require('mongoose');
 const morgan = require('morgan');
 const passport = require('passport');
-const http = require('http');
+const https = require('https');
 const {router: recipesRouter} = require('./routes/recipes');
 const {router: shoppinglistRouter} = require('./routes/shoppinglist');
 const {router: planRouter} = require('./routes/mealplanner');
@@ -20,10 +20,10 @@ const app = express();
 
 // keep heroku awake
 setInterval(function() {
-  http.get('https://leos-recipe-app-server.herokuapp.com/');
+  https.get('http://leos-recipe-app-server.herokuapp.com/');
 }, 300000);
 setInterval(function() {
-  http.get('https://leo-recipe-app-client.herokuapp.com/');
+  https.get('https://leo-recipe-app-client.herokuapp.com/');
 }, 300000);
 
 // Logging
