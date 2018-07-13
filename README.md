@@ -10,25 +10,22 @@ password: password<br />
 ## Screenshots
 
 Login Page
-<img width="1285" alt="screen shot login" src="">
+<img width="1285" alt="screen shot login" src="https://github.com/LeoVeres/recipes-app-client/blob/master/src/Images/Login.PNG?raw=true">
 
 Table of Contents
-<img width="1285" alt="screen shot table of contents" src="">
-
-Dashboard
-<img width="1285" alt="screen shot dashboard" src="">
+<img width="1285" alt="screen shot table of contents" src="https://github.com/LeoVeres/recipes-app-client/blob/master/src/Images/Table%20of%20Contents.PNG?raw=true">
 
 Recipes
-<img width="1285" alt="screen shot recipes" src="">
+<img width="1285" alt="screen shot recipes" src="https://github.com/LeoVeres/recipes-app-client/blob/master/src/Images/Recipes.PNG?raw=true">
 
 Create a Recipe
-<img width="1285" alt="screen shot create a recipe" src="">
+<img width="1285" alt="screen shot create a recipe" src="https://github.com/LeoVeres/recipes-app-client/blob/master/src/Images/Create%20a%20Recipe.PNG?raw=true">
 
 Meal Planner
-<img width="1285" alt="screen shot meal planner" src="">
+<img width="1285" alt="screen shot meal planner" src="https://github.com/LeoVeres/recipes-app-client/blob/master/src/Images/Meal%20Planner.PNG?raw=true">
 
 Shopping List
-<img width="1285" alt="screen shot shopping list" src="">
+<img width="1285" alt="screen shot shopping list" src="https://github.com/LeoVeres/recipes-app-client/blob/master/src/Images/Shopping%20List.PNG?raw=true">
 
 
 ## View the Backend code here:
