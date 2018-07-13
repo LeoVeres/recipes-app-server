@@ -1,0 +1,22 @@
+[
+  {
+    "_id": "111111111111111111111100",
+    "meal": "Dinner",
+    "day": "Tuesday",
+    "title":"toast",
+    "ingredients":  ["flour", "sugar"],
+    "directions": "mix and bake",
+    "tags": ["dessert","lunch"],
+    "userId": "333333333333333333333300"
+  },
+  {
+    "_id": "111111111111111111111101",
+    "meal": "Lunch",
+    "day": "Monday",
+    "title":"cake",
+    "ingredients":  ["flour", "sugar"],
+    "directions": "mix and bake",
+    "tags": ["dessert","lunch"],
+    "userId": "333333333333333333333300"
+  }
+]

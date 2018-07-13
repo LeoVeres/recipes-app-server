@@ -1,0 +1,18 @@
+[
+  {
+    "_id": "000000000000000000000000",
+    "title":"toast",
+    "ingredients":  ["flour", "sugar"],
+    "directions": "mix and bake",
+    "tags": ["dessert","lunch"],
+    "userId": "333333333333333333333300"
+  },
+  {
+    "_id": "000000000000000000000001",    
+    "title":"cake",
+    "ingredients":  ["flour", "sugar"],
+    "directions": "mix and bake",
+    "tags": ["dessert","lunch"],
+    "userId": "333333333333333333333300"
+  }
+]
